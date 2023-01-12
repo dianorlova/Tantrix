@@ -81,12 +81,12 @@ def cons_1():
                 model.addCons(0 <= (ans[i - 1][j - 1][k - 1] <= 1))  # x_i_j_k принимает значение 1 или 0
                 # формируем вывод строчки (сумма x_i_j_k) при конкретном j
                 if i == k == 1:
-                    str += f'{ans[i - 1][j - 1][k - 1]} '
+                    str += f'{ans[i - 1][j - 1][k - 1]}'
                 else:
-                    str += f'+ {ans[i - 1][j - 1][k - 1]} '
+                    str += f' + {ans[i - 1][j - 1][k - 1]}'
 
-        file.write(f'j={j}: {str}\n')
         model.addCons(1 <= (res_sum <= 1))  # С1
+        file.write(f'j={j}: {str} = 1\n')
         count_cons_1 += 1
 
     file.write(f'Ограничений C1: {count_cons_1}')
@@ -109,12 +109,13 @@ def cons_2():
                 # строка 102 дублируется в C1, так что можно её убрать
                 # формируем вывод строчки (сумма x_i_j_k) при конкретном i
                 if j == k == 1:
-                    str += f'{ans[i - 1][j - 1][k - 1]} '
+                    str += f'{ans[i - 1][j - 1][k - 1]}'
                 else:
-                    str += f'+ {ans[i - 1][j - 1][k - 1]} '
-        file.write(f'i={i}: {str}\n')
+                    str += f' + {ans[i - 1][j - 1][k - 1]}'
+
         value = math.ceil((n + 1 - i) / 10)
         model.addCons(value <= (res_sum <= value))  # C2
+        file.write(f'i={i}: {str} = {value}\n')
         count_cons_2 += 1
 
     file.write(f'Ограничений C2: {count_cons_2}')
@@ -144,7 +145,7 @@ sol = model.getBestSol()  # берем лучшее решение
 for i in range(1, n + 1):
     for j in range(1, n + 1):
         for k in range(1, 7):
-            print("x_i_j_k: {}".format(sol[ans[i - 1][j - 1][k - 1]]))
+            print(f'x_{i}_{j}_{k}: {sol[ans[i - 1][j - 1][k - 1]]}')
 
 # вытаскивает из Cons параметры и формирует строку ограничения
 # a = model.getConss()

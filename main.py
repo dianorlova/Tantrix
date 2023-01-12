@@ -59,12 +59,10 @@ def create_y_j_l():
     file.write(f'Переменных y_j_l: {count_y_j_l}')
     file.close()
 
-
 # a(j, l) – функция, которая возвращает номер места, смежного с местом j своим краем l,
 #                 и возвращает 0, если такое место находится вне доски (т.е. нет соседей по ребру l для места j)
 
 # neighbors_numbers_list = [] # Список номеров мест соседей для каждого места j и каждого ребра l
-
 
 def cons_1():
     """
@@ -121,7 +119,6 @@ def cons_2():
     file.write(f'Ограничений C2: {count_cons_2}')
     file.close()
 
-
 # y(j,l) - переменная выражает цвет линии соответствующего ребра l размещенной на месте j фишки
 # def cons_3():
 #     """
@@ -134,7 +131,6 @@ def cons_2():
 # иначе
 # model.addCons(3 <= colors_list[j - 1][l - 1] <= 3)
 
-
 create_x_i_j_k()
 create_y_j_l()
 cons_1()
@@ -146,22 +142,3 @@ for i in range(1, n + 1):
     for j in range(1, n + 1):
         for k in range(1, 7):
             print(f'x_{i}_{j}_{k}: {sol[ans[i - 1][j - 1][k - 1]]}')
-
-# вытаскивает из Cons параметры и формирует строку ограничения
-# a = model.getConss()
-# for cons in a:
-#   coefs = model.getValsLinear(cons)
-#   rhs = model.getSlack(cons,side='rhs')
-#   lhs = model.getSlack(cons,side='lhs')
-#   if lhs != 1e+20:
-#     str = f'{lhs} <= '
-#   else:
-#     str = ''
-#   for coef, value in coefs.items():
-#     name = coef[2:]
-#     if value > 0:
-#       value = f'+{value}'
-#     str += f'{value}*{name}'
-#   if rhs != 1e+20:
-#     str += f' <= {rhs}'
-#   print(str)

@@ -32,6 +32,7 @@ class MainConst:
                         str += f' + {self.ans[i - 1][j - 1][k - 1]}'
 
             self.model.addCons(1 <= (res_sum <= 1))  # С1
+
             file.write(f'j={j}: {str} = 1\n')
             count_cons_1 += 1
 

@@ -14,6 +14,9 @@ from create_vars import CreateVars
 # создаёт структуру поля
 from create_structure import create_structure
 
+# массив для хранения пременных, содержащихся в подцикле
+loops_cons = list()
+
 # создаем модель решателя
 model = Model("Tantrix")
 # обозначения
@@ -72,24 +75,31 @@ sol = model.getBestSol()  # берем лучшее решение
 
 # вывод правильного расположения фишек (ответа)
 vars_count = 0   # Кол-во переменных в текущем решении (число фишек в петле)
-res_sum = 0     # для ограничения на подциклы, если они будут
+list_ans = list()
 for i in range(1, n_new + 1):
     for j in range(1, n + 1):
         for k in range(1, 7):
             if sol[ans[i - 1][j - 1][k - 1]] == 1.0:
+                list_ans.append([i, j, k])
                 vars_count += 1
-                res_sum += ans[i - 1][j - 1][k - 1]     # для ограничения на подциклы, если они будут
+                # res_sum += ans[i - 1][j - 1][k - 1]     # для ограничения на подциклы, если они будут
                 # print(f'x_{i}_{j}_{k}: {sol[ans[i - 1][j - 1][k - 1]]}')  # раньше выводили здесь ответ
 
-print(f'res_sum={res_sum}')
-if vars_count != n:
+# ф-ия f возвращает массив с информацией о переменных, которые содержатся в петле
+vars_in_loop = sub_functions.get_vars_in_loop(list_ans, 3, n_new)
+print(vars_in_loop)
+if len(vars_in_loop) != n:
+    # чтобы хранить все ограничения на подциклы для каждой итерации запуска решателя
+    # если длина массива с информацией о петле меньше n
+    # сохранить этот массив с информацией в общем массиве loops_cons
+    loops_cons.append(vars_in_loop)
     print(f"Кол-во переменных в текущем решении: {vars_count}")
     print("Количество переменных маловато для ответа, добавляем ограничение на подциклы")
 
 # ******** ПЫТАЮСЬ НОВУЮ МОДЕЛЬ СДЕЛАТЬ
     model = Model("NewTantrix")
 
-    ans = []  # ответ задачи Tantrix, список с иксами x_i_j_k
+    ans = []  # ответ задачи NewTantrix, список с иксами x_i_j_k
     colors_list = []  # список с игреками y_j_l
 
     # создаем объект класса для создания переменных
@@ -110,30 +120,36 @@ if vars_count != n:
     # чтобы все линии обозначенного цвета образовывали петли.
     main_cons.cons_3(sub_functions)
     main_cons.cons_4(sub_functions)
-    # model.addCons(res_sum <= (vars_count - 1))              # ДОБАВЛЯЮ ОГРАНИЧЕНИЕ НА ПОДЦИКЛЫ ЧУТЬ ПОРАНЬШЕ
 
     # записывает в файл координаты мест фишек на поле
     file = open('all_coordinates.txt', 'w', encoding='utf-8')
     file.write(f'{sub_functions.ans_to}')
     file.close()
-    print(f'res_sum={res_sum}')
 
     # создаем объект класса дополнительных ограничений
     sub_cons = SubCons(n, n_new, ans, model, colors_list)
     # создаем ограничение на цвета
     sub_cons.cons_colors(sub_functions)
-    print("Мы тут1")
-    # print(f'res_sum={res_sum}')                                     # НЕ ВЫВОДИТСЯ
-    print("Мы тут2")                                                # НЕ ВЫВОДИТСЯ ЕСЛИ НЕ УБРАТЬ СТРОЧКУ ВЫШЕ
+
     # создание и запись в файл структуры поля в виде графа
     create_structure(n, sub_functions)
-    print("Мы тут3")
-    # ********
+# ********
+    print("СОЗДАЛИ НОВУЮ МОДЕЛЬ")
 
-    # model.addCons(res_sum <= (vars_count - 1))
+    res_sum = 0  # для ограничения на подциклы, если они будут
+    all_vars = model.getVars()
+    for var in all_vars:
+        for var_in_loop in vars_in_loop:
+            x = f'x_{var_in_loop[0]}_{var_in_loop[1]}_{var_in_loop[2]}'
+            if x == str(var):
+                # print(var, type(var))
+                res_sum += var
+                # print('-----------')
+    print(res_sum)
+
+    model.addCons(res_sum <= (len(vars_in_loop) - 1))
     print("Ограничение на подциклы добавили")
 
-                                                                    # ДАЛЬШЕ НИЧЕГО НЕ ПРОИСХОДИТ
     # решение головоломки (перезапускаем решатель)
     model.optimize()
     sol = model.getBestSol()  # берем лучшее решение
@@ -154,6 +170,7 @@ else:
                 if sol[ans[i - 1][j - 1][k - 1]] == 1.0:
                     # выводим ранее полученный ответ
                     print(f'x_{i}_{j}_{k}: {sol[ans[i - 1][j - 1][k - 1]]}')
+    print(f'ans={ans}')
     print("Всё ОК")
 
 

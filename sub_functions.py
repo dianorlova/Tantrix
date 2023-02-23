@@ -79,7 +79,7 @@ class SubFunctions:
             n_new - n' (см. C2' в курсовой)
 
         Возвращает:
-            цвет линии(1,2 или 3), соответствующей ребру l, когда фишка расположена в ориентации k
+            цвет линии(1,2 или 3), соответствующей ребру l, когда фишка i расположена в ориентации k
         """
         designated_color = dict_designated_color[n_new]  # получаем обозначенный цвет
 
@@ -87,3 +87,36 @@ class SubFunctions:
 
         color = dict_chip_orientation_edge[i][k][l]  # => К,Ж или С
         return dict_color_indicator[color]
+
+    @staticmethod
+    def get_designated_color(n_new):
+        # получение обозначенного цвета
+        return dict_designated_color[n_new]
+
+    def get_vars_in_loop(self, list_ans, ans_color, n_new):
+        # возвращает массив из массивов, содержащих индексы переменных, входящих в подцикл
+        ans = list()
+        d = dict()
+        for i in list_ans:
+            d[i[1]] = i
+        prev = None
+        a = list_ans[0][0]
+        cur = list_ans[0]
+        ans.append(cur)
+        while True:
+            next_cur = self.get_next(cur, prev, ans_color, d, n_new)
+            if next_cur[0] == a:
+                break
+            prev = cur[1]
+            ans.append(next_cur)
+            cur = next_cur
+        return ans
+
+    def get_next(self, cur, prev, ans_color, all_ans_dict, n_new):
+        # возвращает индексы следующего элемента в петле
+        for i in range(1, 7):
+            cur_color = self.c(cur[0], cur[2], i, n_new)
+            if cur_color == ans_color:
+                next_cur = self.a(cur[1], i)
+                if next_cur != prev and next_cur != 0:
+                    return all_ans_dict[next_cur]

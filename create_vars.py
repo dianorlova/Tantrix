@@ -2,7 +2,6 @@ class CreateVars:
     """
         Описывает добавление переменных x(i,j,k) и  y(j,l) в модель
     """
-
     def __init__(self, n, n_new, ans, model, colors_list):
         self.n = n
         self.n_new = n_new

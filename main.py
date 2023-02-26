@@ -14,7 +14,7 @@ from create_vars import CreateVars
 # создаёт структуру поля
 from create_structure import create_structure
 
-# массив для хранения пременных, содержащихся в подцикле
+# массив для хранения переменных, содержащихся в подцикле (для последующего запрета этого подцикла)
 loops_cons = list()
 
 # создаем модель решателя
@@ -30,6 +30,7 @@ file = open('input.txt', 'r', encoding='utf-8')
 n = int(file.read())
 file.close()
 
+# количество видов фишек (всего может быть 10 видов)
 n_new = min([n, 10])  # см. С2'(версия с дубликатами)
 
 ans = []  # ответ задачи Tantrix, список с иксами x_i_j_k

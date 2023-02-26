@@ -11,27 +11,38 @@ from sub_functions import SubFunctions
 # добавление переменных x_i_j_k и y_j_l
 from create_vars import CreateVars
 
-# создаёт структуру поля
+# создание структуры поля
 from create_structure import create_structure
 
 
 def create_model(model_name, n, n_new):
+    """
+    Принимает:
+        model_name - название модели,
+        n - количество фишек
+        n_new - количество видов фишек (всего может быть 10 видов, т.е. рисунков)
+
+    Возвращает:
+        model - модель решателя,
+        ans - 3х*массив из x_ijk,
+        colors_list - 2x*массив из y_jl
+    """
     # создаем модель решателя
     model = Model(model_name)
     ans = []  # ответ задачи Tantrix, список с иксами x_i_j_k
     colors_list = []  # список с игреками y_j_l
 
-    # создаем обьект класса для создания переменных
+    # создаем объект класса для создания переменных
     create_vars = CreateVars(n, n_new, ans, model, colors_list)
     # создаем переменную вида x_i_j_k
     create_vars.create_x_i_j_k()
     # создаем переменную вида y_j_l
     create_vars.create_y_j_l()
 
-    # создаем обьект класса вспомогательных функций
+    # создаем объект класса вспомогательных функций
     sub_functions = SubFunctions(n)
 
-    # создаем обьект класса основных ограничений
+    # создаем объект класса основных ограничений
     main_cons = MainConst(n, n_new, ans, model, colors_list)
     # создаем основные ограничения C1-C4
     main_cons.cons_1()

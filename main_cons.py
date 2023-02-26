@@ -107,5 +107,5 @@ class MainConst:
                             file.write(f'{self.colors_list[j - 1][l - 1]} = {y_j1_l1}\n')
 
                             count_cons_4 += 1
-        file.write(f'Ограничений C4: {count_cons_4}')
+        file.write(f'Ограничений C4: {count_cons_4}. На самом деле их {int(count_cons_4/2)}, т.к. ограничения дублируются.')
         file.close()

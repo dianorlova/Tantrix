@@ -90,33 +90,53 @@ class SubFunctions:
 
     @staticmethod
     def get_designated_color(n_new):
-        # получение обозначенного цвета
+        # получение обозначенного цвета (буква К, Ж или С)
         return dict_designated_color[n_new]
 
-    def get_vars_in_loop(self, list_ans, ans_color, n_new):
-        # возвращает массив из массивов, содержащих индексы переменных, входящих в подцикл
+    def loops(self, list_ans, designated_color, n_new):
+        cur_vars = {tuple(i) for i in list_ans}
         ans = list()
-        d = dict()
-        for i in list_ans:
-            d[i[1]] = i
-        prev = None
-        a = list_ans[0][0]
-        cur = list_ans[0]
-        ans.append(cur)
-        while True:
-            next_cur = self.get_next(cur, prev, ans_color, d, n_new)
-            if next_cur[0] == a:
-                break
-            prev = cur[1]
-            ans.append(next_cur)
-            cur = next_cur
+        while cur_vars:
+            temp = self.get_vars_in_loop(list_ans,designated_color,n_new,cur_vars.pop())
+            cur_vars -= temp
+            ans.append(temp)
         return ans
 
-    def get_next(self, cur, prev, ans_color, all_ans_dict, n_new):
-        # возвращает индексы следующего элемента в петле
-        for i in range(1, 7):
-            cur_color = self.c(cur[0], cur[2], i, n_new)
-            if cur_color == ans_color:
-                next_cur = self.a(cur[1], i)
-                if next_cur != prev and next_cur != 0:
+
+    def get_vars_in_loop(self, list_ans, designated_color, n_new, start):
+        """
+        Принимает:
+            list_ans - Двумерный массив вида [[i, j, k], ..., [i', j', k']], это индексы всех иксов (x_ijk в ответе)
+             текущего решения,
+            designated_color - обозначенный цвет (всегда равен 3),
+            n_new - количество видов фишек (всего может быть 10 видов, т.е. рисунков)
+
+        Возвращает:
+            ans - Массив вида [[i,j,k], ..., [i',j',k']], где ijk - индексы переменных в петле/подцикле
+        """
+        # возвращает массив из массивов, содержащих индексы переменных, входящих в подцикл
+        ans = set()
+        d = dict()
+        for lst in list_ans:
+            d[lst[1]] = lst     # d[j] = [i,j,k] для каждого j
+        prev = None             # предыдущий
+        cur = start       # [i,j,k] текущий (стартовая фишка)
+        a = cur[0]  # i из [i,j,k]
+        ans.add(tuple(cur))
+        while True:
+            next_cur = self.get_next(cur, prev, designated_color, d, n_new)
+            if next_cur[0] == a:    # если i соседней фишки = i стартовой фишки => петля замкнулась
+                break
+            prev = cur[1]           # стартовое место j стало предыдущим
+            ans.add(tuple(next_cur))  # [i,j,k] добавляем в массив элементов петли/подцикла
+            cur = next_cur          # также смещаем текущее место на следующее
+        return ans
+
+    def get_next(self, cur, prev, designated_color, all_ans_dict, n_new):
+        # возвращает индексы ijk следующего(соседнего) элемента в петле (ищем соседний эл-т по цвету петли)
+        for l in range(1, 7):   # цикл по рёбрам
+            cur_color = self.c(cur[0], cur[2], l, n_new)    # получаем текущий цвет ребра (1,2 или 3)
+            if cur_color == designated_color:       # если он равен 3(обозначенному цвету - цвету главной петли)
+                next_cur = self.a(cur[1], l)        # находим соседа в петле для места j=cur[1] по этому ребру l
+                if next_cur != prev and next_cur != 0:  # если сосед существует
                     return all_ans_dict[next_cur]

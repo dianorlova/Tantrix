@@ -59,6 +59,7 @@ class SubFunctions:
 
     def a(self, j, l):
         """
+        Функция ищет соседа. Поле в виде спирали.
         Принимает:
             j - номер текущего места,
             l - номер ребра текущего места
@@ -70,7 +71,71 @@ class SubFunctions:
         # print(a(7,3)) => 18
         # для места 7 и его ребра 3 есть сосед по этому ребру с местом 18 (см.картинку со спиралью)
 
-    def c(self,i, k, l, n_new):
+    def a_2(self, j, l, m):
+        """
+        Функция ищет соседа. Поле в виде гексагональной решетки.
+        Принимает:
+            j - номер текущего места,
+            l - номер ребра текущего места,
+            m - кол-во мест в строке
+        Возвращает:
+            Номер места(соседа), смежного с местом j своим краем l,
+             и возвращает 0, если такое место находится вне доски.
+        """
+        j -= 1  # пусть нумерация мест идёт с нуля
+        a = j // m  # номер строки (a = 0, 1, 2, ...)
+        b = j % m  # номер в строке (b = 1, 2, ..., m)
+        ch = a % 2  # четность строки
+        n_a = 0  # смещение 'a' в зависимости от ребра l
+        n_b = 0  # смещение 'b' в зависимости от ребра l
+        if ch != 0:  # если номер строки нечетный
+            match l:
+                case 1:
+                    n_a = a + 0
+                    n_b = b + 1
+                case 2:
+                    n_a = a + 1
+                    n_b = b + 1
+                case 3:
+                    n_a = a + 1
+                    n_b = b + 0
+                case 4:
+                    n_a = a + 0
+                    n_b = b - 1
+                case 5:
+                    n_a = a - 1
+                    n_b = b + 0
+                case 6:
+                    n_a = a - 1
+                    n_b = b + 1
+        else:  # если номер строки четный
+            match l:
+                case 1:
+                    n_a = a + 0
+                    n_b = b + 1
+                case 2:
+                    n_a = a + 1
+                    n_b = b + 0
+                case 3:
+                    n_a = a + 1
+                    n_b = b - 1
+                case 4:
+                    n_a = a + 0
+                    n_b = b - 1
+                case 5:
+                    n_a = a - 1
+                    n_b = b - 1
+                case 6:
+                    n_a = a - 1
+                    n_b = b + 0
+        ans = n_a * m + n_b
+        if (ans // m, ans % m) != (n_a, n_b):   # условие на выход за пределы гекс.решетки
+            ans = 0
+        else:
+            ans+=1
+        return ans
+
+    def c(self, i, k, l, n_new):
         """
         Принимает:
             i - номер фишки(от 1 до n_new),
@@ -94,14 +159,14 @@ class SubFunctions:
         return dict_designated_color[n_new]
 
     def loops(self, list_ans, designated_color, n_new):
+        # возвращает список всех циклов
         cur_vars = {tuple(i) for i in list_ans}
         ans = list()
         while cur_vars:
-            temp = self.get_vars_in_loop(list_ans,designated_color,n_new,cur_vars.pop())
+            temp = self.get_vars_in_loop(list_ans, designated_color, n_new, cur_vars.pop())
             cur_vars -= temp
             ans.append(temp)
         return ans
-
 
     def get_vars_in_loop(self, list_ans, designated_color, n_new, start):
         """
@@ -118,25 +183,25 @@ class SubFunctions:
         ans = set()
         d = dict()
         for lst in list_ans:
-            d[lst[1]] = lst     # d[j] = [i,j,k] для каждого j
-        prev = None             # предыдущий
-        cur = start       # [i,j,k] текущий (стартовая фишка)
+            d[lst[1]] = lst  # d[j] = [i,j,k] для каждого j
+        prev = None  # предыдущий
+        cur = start  # [i,j,k] текущий (стартовая фишка)
         a = cur[0]  # i из [i,j,k]
         ans.add(tuple(cur))
         while True:
             next_cur = self.get_next(cur, prev, designated_color, d, n_new)
-            if next_cur[0] == a:    # если i соседней фишки = i стартовой фишки => петля замкнулась
+            if next_cur[0] == a:  # если i соседней фишки = i стартовой фишки => петля замкнулась
                 break
-            prev = cur[1]           # стартовое место j стало предыдущим
+            prev = cur[1]  # стартовое место j стало предыдущим
             ans.add(tuple(next_cur))  # [i,j,k] добавляем в массив элементов петли/подцикла
-            cur = next_cur          # также смещаем текущее место на следующее
+            cur = next_cur  # также смещаем текущее место на следующее
         return ans
 
     def get_next(self, cur, prev, designated_color, all_ans_dict, n_new):
         # возвращает индексы ijk следующего(соседнего) элемента в петле (ищем соседний эл-т по цвету петли)
-        for l in range(1, 7):   # цикл по рёбрам
-            cur_color = self.c(cur[0], cur[2], l, n_new)    # получаем текущий цвет ребра (1,2 или 3)
-            if cur_color == designated_color:       # если он равен 3(обозначенному цвету - цвету главной петли)
-                next_cur = self.a(cur[1], l)        # находим соседа в петле для места j=cur[1] по этому ребру l
+        for l in range(1, 7):  # цикл по рёбрам
+            cur_color = self.c(cur[0], cur[2], l, n_new)  # получаем текущий цвет ребра (1,2 или 3)
+            if cur_color == designated_color:  # если он равен 3(обозначенному цвету - цвету главной петли)
+                next_cur = self.a(cur[1], l)  # находим соседа в петле для места j=cur[1] по этому ребру l
                 if next_cur != prev and next_cur != 0:  # если сосед существует
                     return all_ans_dict[next_cur]

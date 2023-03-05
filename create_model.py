@@ -58,12 +58,12 @@ def create_model(model_name, n, n_new):
     # создаем ограничение на цвета
     sub_cons.cons_colors(sub_functions)
 
-    # записывает в файл координаты мест фишек на поле
-    file = open('all_coordinates.txt', 'w', encoding='utf-8')
-    file.write(f'{sub_functions.ans_to}')
-    file.close()
+    # записывает в файл координаты мест фишек на спиральной форме поля
+    # file = open('all_coordinates.txt', 'w', encoding='utf-8')
+    # file.write(f'{sub_functions.ans_to}')
+    # file.close()
 
-    # создание и запись в файл структуры поля в виде графа
-    create_structure(n, sub_functions)
+    # создание и запись в файл структуры спирального поля в виде графа
+    # create_structure(n, sub_functions)
 
     return model, ans, colors_list

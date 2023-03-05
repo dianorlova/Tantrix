@@ -88,7 +88,6 @@ class MainConst:
         file.write(f'Ограничений C3: {count_cons_3}')
         file.close()
 
-
     def cons_4(self, sub_functions):
         """
             Ограничение C4: Соединение линий одного и того же цвета для каждых трех цветов.

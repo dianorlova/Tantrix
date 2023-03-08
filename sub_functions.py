@@ -129,10 +129,10 @@ class SubFunctions:
                     n_a = a - 1
                     n_b = b + 0
         ans = n_a * m + n_b
-        if (ans // m, ans % m) != (n_a, n_b):   # условие на выход за пределы гекс.решетки
+        if (ans // m, ans % m) != (n_a, n_b):  # условие на выход за пределы гекс.решетки
             ans = 0
         else:
-            ans+=1
+            ans += 1
         return ans
 
     def c(self, i, k, l, n_new):
@@ -158,17 +158,17 @@ class SubFunctions:
         # получение обозначенного цвета (буква К, Ж или С)
         return dict_designated_color[n_new]
 
-    def loops(self, list_ans, designated_color, n_new):
+    def loops(self, list_ans, n_new):
         # возвращает список всех циклов
         cur_vars = {tuple(i) for i in list_ans}
         ans = list()
         while cur_vars:
-            temp = self.get_vars_in_loop(list_ans, designated_color, n_new, cur_vars.pop())
+            temp = self.get_vars_in_loop(list_ans, n_new, cur_vars.pop())
             cur_vars -= temp
             ans.append(temp)
         return ans
 
-    def get_vars_in_loop(self, list_ans, designated_color, n_new, start):
+    def get_vars_in_loop(self, list_ans, n_new, start, designated_color=3):
         """
         Принимает:
             list_ans - Двумерный массив вида [[i, j, k], ..., [i', j', k']], это индексы всех иксов (x_ijk в ответе)
@@ -205,3 +205,22 @@ class SubFunctions:
                 next_cur = self.a(cur[1], l)  # находим соседа в петле для места j=cur[1] по этому ребру l
                 if next_cur != prev and next_cur != 0:  # если сосед существует
                     return all_ans_dict[next_cur]
+
+    @staticmethod
+    def number_divisors(n):
+        """
+        Ищет все делители числа n, кроме делителя 1, т.к. он не нужен(если решетка 1*20, то это полоска из 20 фишек)
+        Принимает:
+            n - кол-во фишек или мест на поле
+
+        Возвращает:
+            список кортежей вида (a,b), где a*b=n; a-длина,b-ширина(высота) решётки
+        """
+        i = 1
+        lst_divisors = list()
+        while i <= n ** 0.5:
+            if n % i == 0 and i != 1:
+                lst_divisors.append((i, n // i))
+            i += 1
+
+        return lst_divisors

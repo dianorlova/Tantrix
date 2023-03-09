@@ -15,12 +15,14 @@ from create_vars import CreateVars
 from create_structure import create_structure
 
 
-def create_model(model_name, n, n_new):
+def create_model(model_name, n, n_new, is_spiral, chosen_field):
     """
     Принимает:
         model_name - название модели,
         n - количество фишек
         n_new - количество видов фишек (всего может быть 10 видов, т.е. рисунков)
+        is_spiral - является ли поле спиралью
+        chosen_field - кол-во строк и столбцов в поле ((0,0) для спирали)
 
     Возвращает:
         model - модель решателя,
@@ -43,7 +45,7 @@ def create_model(model_name, n, n_new):
     sub_functions = SubFunctions(n)
 
     # создаем объект класса основных ограничений
-    main_cons = MainConst(n, n_new, ans, model, colors_list)
+    main_cons = MainConst(n, n_new, ans, model, colors_list, is_spiral, chosen_field)
     # создаем основные ограничения C1-C4
     main_cons.cons_1()
     main_cons.cons_2()

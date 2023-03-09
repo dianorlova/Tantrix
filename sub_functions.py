@@ -57,6 +57,12 @@ class SubFunctions:
                 start = self.bias(start, l)
             i += 1
 
+    def choose_a_function(self, is_spiral: bool, j, l, m):
+        """В зависимости от формы поля вызывает нужную функцию a"""
+        if is_spiral:
+            return self.a(j, l)
+        return self.a_2(j, l, m)
+
     def a(self, j, l):
         """
         Функция ищет соседа. Поле в виде спирали.
@@ -158,17 +164,17 @@ class SubFunctions:
         # получение обозначенного цвета (буква К, Ж или С)
         return dict_designated_color[n_new]
 
-    def loops(self, list_ans, n_new):
+    def loops(self, list_ans, n_new, is_spiral, chosen_field):
         # возвращает список всех циклов
         cur_vars = {tuple(i) for i in list_ans}
         ans = list()
         while cur_vars:
-            temp = self.get_vars_in_loop(list_ans, n_new, cur_vars.pop())
+            temp = self.get_vars_in_loop(list_ans, n_new, cur_vars.pop(), is_spiral, chosen_field)
             cur_vars -= temp
             ans.append(temp)
         return ans
 
-    def get_vars_in_loop(self, list_ans, n_new, start, designated_color=3):
+    def get_vars_in_loop(self, list_ans, n_new, start, is_spiral, chosen_field, designated_color=3):
         """
         Принимает:
             list_ans - Двумерный массив вида [[i, j, k], ..., [i', j', k']], это индексы всех иксов (x_ijk в ответе)
@@ -189,7 +195,7 @@ class SubFunctions:
         a = cur[0]  # i из [i,j,k]
         ans.add(tuple(cur))
         while True:
-            next_cur = self.get_next(cur, prev, designated_color, d, n_new)
+            next_cur = self.get_next(cur, prev, designated_color, d, n_new, is_spiral, chosen_field)
             if next_cur[0] == a:  # если i соседней фишки = i стартовой фишки => петля замкнулась
                 break
             prev = cur[1]  # стартовое место j стало предыдущим
@@ -197,12 +203,12 @@ class SubFunctions:
             cur = next_cur  # также смещаем текущее место на следующее
         return ans
 
-    def get_next(self, cur, prev, designated_color, all_ans_dict, n_new):
+    def get_next(self, cur, prev, designated_color, all_ans_dict, n_new, is_spiral, chosen_field):
         # возвращает индексы ijk следующего(соседнего) элемента в петле (ищем соседний эл-т по цвету петли)
         for l in range(1, 7):  # цикл по рёбрам
             cur_color = self.c(cur[0], cur[2], l, n_new)  # получаем текущий цвет ребра (1,2 или 3)
             if cur_color == designated_color:  # если он равен 3(обозначенному цвету - цвету главной петли)
-                next_cur = self.a(cur[1], l)  # находим соседа в петле для места j=cur[1] по этому ребру l
+                next_cur = self.choose_a_function(is_spiral, cur[1], l, chosen_field[0])  # находим соседа в петле для места j=cur[1] по этому ребру l
                 if next_cur != prev and next_cur != 0:  # если сосед существует
                     return all_ans_dict[next_cur]
 
@@ -221,6 +227,8 @@ class SubFunctions:
         while i <= n ** 0.5:
             if n % i == 0 and i != 1:
                 lst_divisors.append((i, n // i))
+                if i != (n // i):
+                    lst_divisors.append((n // i, i))
             i += 1
 
         return lst_divisors

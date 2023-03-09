@@ -3,6 +3,8 @@ from create_model import create_model
 # дополнительные функции a(j,l), c(i,k,l) и т.д.
 from sub_functions import SubFunctions
 
+from select_field import select_field
+
 # массив для хранения переменных, содержащихся в подцикле (для последующего запрета этого подцикла)
 all_loops_cons = list()  # массив ВСЕХ подциклов:
 # [
@@ -12,25 +14,31 @@ all_loops_cons = list()  # массив ВСЕХ подциклов:
 # ]
 
 # читаем из файла количество фишек
-file = open('input.txt', 'r', encoding='utf-8')
-n = int(file.read())
-file.close()
-if n < 3:
-    print("Нет решения. Количество фишек должно быть <=3 .")
-    exit()
+# file = open('input.txt', 'r', encoding='utf-8')
+# n = int(file.read())
+# file.close()
+# if n < 3:
+#     print("Нет решения. Количество фишек должно быть <=3 .")
+#     exit()
+
+# пользователь указывает количество фишек
+n = int(input("Введите номер задачи для решения: "))
 
 # создание экземпляра класса Дополнительных функций
 sub_functions = SubFunctions(n)
 
 # ищет все делители числа n, кроме делителя 1
 lst_divisors = sub_functions.number_divisors(n)
-print(lst_divisors)
+
+# определяем, является ли поле спиралью и кол-во строк и столбцов в поле
+is_spiral, chosen_field = select_field(lst_divisors)
+
 
 # каждая фишка i имеет вид(рисунок линий) 1, 2, ..., 10; это значение выражает n_new
 n_new = min([n, 10])  # см. С2'(версия с дубликатами)
 
-# создаем модель решателя (model - модель, ans - 3х*массив из x_ijk, colors_list - 2x*массив из y_jl
-model, ans, colors_list = create_model("Tantrix", n, n_new)
+# создаем модель решателя (model - модель, ans - 3х*массив из x_ijk, colors_list - 2x*массив из y_jl)
+model, ans, colors_list = create_model("Tantrix", n, n_new, is_spiral, chosen_field)
 
 # решение головоломки
 model.optimize()
@@ -51,7 +59,7 @@ print(f"\nДвумерный массив вида [[i, j, k], ..., [i', j', k']
       f"list_ans={list_ans}")
 
 # хранит список всех петель за один запуск решателя
-loops = sub_functions.loops(list_ans, n_new)
+loops = sub_functions.loops(list_ans, n_new, is_spiral, chosen_field)
 
 count_while = 0
 while len(loops) != 1:
@@ -63,7 +71,7 @@ while len(loops) != 1:
         all_loops_cons.append(loop)  # найденные подциклы добавили в общий массив всех подциклов
 
     # создаем вторую модель решателя (model - модель, ans - 3х*массив из x_ijk, colors_list - 2x*массив из y_jl
-    model, ans, colors_list = create_model("Tantrix", n, n_new)
+    model, ans, colors_list = create_model("Tantrix", n, n_new, is_spiral, chosen_field)
 
     res_sum = 0  # для ограничения на подциклы, если они будут
     all_vars = model.getVars()  # получаем массив всех переменных модели
@@ -100,7 +108,7 @@ while len(loops) != 1:
 
     # все петли
     print(f'list_ans={list_ans}')
-    loops = sub_functions.loops(list_ans, n_new)
+    loops = sub_functions.loops(list_ans, n_new, is_spiral, chosen_field)
     print(f'loops={loops}')
     print(f'\nans={ans}')
     print(f'colors_list={colors_list}')
@@ -115,7 +123,10 @@ else:
     print(f'ans={ans}')
     print("Всё ОК")
 
-# print("***********")
-# print(f'a_2(11,1,4)={sub_functions.a_2(11,1,4)} должно быть 12')
-# print(f'a_2(11,6,4)={sub_functions.a_2(11,6,4)} должно быть 7')
-# print(f'a_2(11,4,4)={sub_functions.a_2(11,4,4)} должно быть 10')
+print("***********")
+print(f'a_2(11,1,4)={sub_functions.a_2(11,1,4)} должно быть 12')
+print(f'a_2(11,6,4)={sub_functions.a_2(11,6,4)} должно быть 7')
+print(f'a_2(11,4,4)={sub_functions.a_2(11,4,4)} должно быть 10')
+print("***********")
+print(f'a(1,4)={sub_functions.a(1,4)} должно быть 0')
+print(f'a(1,5)={sub_functions.a(1,5)} должно быть 2')

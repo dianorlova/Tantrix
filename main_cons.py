@@ -79,7 +79,7 @@ class MainConst:
         file = open('C3-output.txt', 'w', encoding='utf-8')
         for j in range(1, self.n + 1):
             for l in range(1, 7):
-                if sub_functions.choose_a_function(self.is_spiral, j, l, self.chosen_field[0]) == 0:
+                if sub_functions.choose_a_function(self.is_spiral, j, l, self.chosen_field[1]) == 0:
                     self.model.addCons(1 <= (self.colors_list[j - 1][l - 1] <= 2))  # C3
                     # если у места j и его ребра l нет соседа, то цвет линии у этого ребра будет 1 или 2
                     # (т.е. НЕобозначенный цвет)
@@ -101,8 +101,8 @@ class MainConst:
             for j1 in range(1, self.n + 1):
                 for l in range(1, 7):
                     for l1 in range(1, 7):
-                        if sub_functions.choose_a_function(self.is_spiral, j, l, self.chosen_field[0]) == j1 and \
-                                sub_functions.choose_a_function(self.is_spiral, j1, l1, self.chosen_field[0]) == j:
+                        if sub_functions.choose_a_function(self.is_spiral, j, l, self.chosen_field[1]) == j1 and \
+                                sub_functions.choose_a_function(self.is_spiral, j1, l1, self.chosen_field[1]) == j:
                             y_j1_l1 = self.colors_list[j1 - 1][l1 - 1]
 
                             self.model.addCons(0 <= ((self.colors_list[j - 1][l - 1] - y_j1_l1) <= 0))  # C4: y_j_l = y_j'_l'

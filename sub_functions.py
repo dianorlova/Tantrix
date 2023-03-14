@@ -19,6 +19,7 @@ class SubFunctions:
 
     def __init__(self, n):
         self.ans_to, self.ans_from = self.find_all_coordinates(n)
+        self.n = n
 
     def bias(self, current_location, l):
         """
@@ -139,6 +140,8 @@ class SubFunctions:
             ans = 0
         else:
             ans += 1
+        if ans>self.n or ans<1:
+            ans = 0
         return ans
 
     def c(self, i, k, l, n_new):
@@ -166,11 +169,12 @@ class SubFunctions:
 
     def loops(self, list_ans, n_new, is_spiral, chosen_field):
         # возвращает список всех циклов
-        cur_vars = {tuple(i) for i in list_ans}
+        cur_vars = {tuple(i) for i in list_ans}     # {(i,j,k), ..., (i,j,k)}
         ans = list()
         while cur_vars:
             temp = self.get_vars_in_loop(list_ans, n_new, cur_vars.pop(), is_spiral, chosen_field)
             cur_vars -= temp
+            print(temp)
             ans.append(temp)
         return ans
 
@@ -192,11 +196,11 @@ class SubFunctions:
             d[lst[1]] = lst  # d[j] = [i,j,k] для каждого j
         prev = None  # предыдущий
         cur = start  # [i,j,k] текущий (стартовая фишка)
-        a = cur[0]  # i из [i,j,k]
+        a = cur[1]  # i из [i,j,k]
         ans.add(tuple(cur))
         while True:
             next_cur = self.get_next(cur, prev, designated_color, d, n_new, is_spiral, chosen_field)
-            if next_cur[0] == a:  # если i соседней фишки = i стартовой фишки => петля замкнулась
+            if next_cur[1] == a:  # если j соседней фишки = j стартовой фишки => петля замкнулась
                 break
             prev = cur[1]  # стартовое место j стало предыдущим
             ans.add(tuple(next_cur))  # [i,j,k] добавляем в массив элементов петли/подцикла
@@ -208,7 +212,7 @@ class SubFunctions:
         for l in range(1, 7):  # цикл по рёбрам
             cur_color = self.c(cur[0], cur[2], l, n_new)  # получаем текущий цвет ребра (1,2 или 3)
             if cur_color == designated_color:  # если он равен 3(обозначенному цвету - цвету главной петли)
-                next_cur = self.choose_a_function(is_spiral, cur[1], l, chosen_field[0])  # находим соседа в петле для места j=cur[1] по этому ребру l
+                next_cur = self.choose_a_function(is_spiral, cur[1], l, chosen_field[1])  # находим соседа в петле для места j=cur[1] по этому ребру l
                 if next_cur != prev and next_cur != 0:  # если сосед существует
                     return all_ans_dict[next_cur]
 

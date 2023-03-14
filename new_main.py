@@ -17,12 +17,12 @@ all_loops_cons = list()  # массив ВСЕХ подциклов:
 # file = open('input.txt', 'r', encoding='utf-8')
 # n = int(file.read())
 # file.close()
-# if n < 3:
-#     print("Нет решения. Количество фишек должно быть <=3 .")
-#     exit()
 
 # пользователь указывает количество фишек
 n = int(input("Введите номер задачи для решения: "))
+if n < 3:
+    print("Нет решения. Количество фишек должно быть >=3 .")
+    exit()
 
 # создание экземпляра класса Дополнительных функций
 sub_functions = SubFunctions(n)
@@ -76,7 +76,7 @@ while len(loops) != 1:
     res_sum = 0  # для ограничения на подциклы, если они будут
     all_vars = model.getVars()  # получаем массив всех переменных модели
 
-    for vars_in_loop in all_loops_cons:  # было for vars_in_loop in loops:
+    for vars_in_loop in all_loops_cons:
         for var_in_loop in vars_in_loop:
             x = f'x_{var_in_loop[0]}_{var_in_loop[1]}_{var_in_loop[2]}'
             for var in all_vars:
@@ -87,7 +87,6 @@ while len(loops) != 1:
         res_sum = 0
 
     print(f'ВСЕ ПОДЦИКЛЫ:\nall_loops_cons={all_loops_cons}')
-    print("Ограничение на подцикл(ы) добавили")
 
     # решение головоломки
     model.optimize()
@@ -100,14 +99,13 @@ while len(loops) != 1:
     for i in range(1, n_new + 1):
         for j in range(1, n + 1):
             for k in range(1, 7):
-                # print(f'x_{i}_{j}_{k}: {round(sol[ans[i - 1][j - 1][k - 1]],1)}')
                 if round(sol[ans[i - 1][j - 1][k - 1]], 1) == 1.0:
                     print(f'x_{i}_{j}_{k}: {round(sol[ans[i - 1][j - 1][k - 1]], 1)}')
                     list_ans.append([i, j, k])
                     vars_count += 1
 
-    # все петли
     print(f'list_ans={list_ans}')
+    # найденные петли за один запуск
     loops = sub_functions.loops(list_ans, n_new, is_spiral, chosen_field)
     print(f'loops={loops}')
     print(f'\nans={ans}')
@@ -122,11 +120,3 @@ else:
                     print(f'x_{i}_{j}_{k}: {round(sol[ans[i - 1][j - 1][k - 1]], 1)}')
     print(f'ans={ans}')
     print("Всё ОК")
-
-print("***********")
-print(f'a_2(11,1,4)={sub_functions.a_2(11,1,4)} должно быть 12')
-print(f'a_2(11,6,4)={sub_functions.a_2(11,6,4)} должно быть 7')
-print(f'a_2(11,4,4)={sub_functions.a_2(11,4,4)} должно быть 10')
-print("***********")
-print(f'a(1,4)={sub_functions.a(1,4)} должно быть 0')
-print(f'a(1,5)={sub_functions.a(1,5)} должно быть 2')

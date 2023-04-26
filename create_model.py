@@ -68,4 +68,9 @@ def create_model(model_name, n, n_new, is_spiral, chosen_field):
     # создание и запись в файл структуры спирального поля в виде графа
     # create_structure(n, sub_functions)
 
+    if n > 5:
+        sub_cons.cons_7(is_spiral, chosen_field, sub_functions)
+        # sub_cons.cons_8 - убираем подциклы из 4 фишек
+        # sub_cons.cons_9 - убираем подциклы из 5 фишек
+
     return model, ans, colors_list

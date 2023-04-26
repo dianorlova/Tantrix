@@ -70,7 +70,7 @@ while len(loops) != 1:
     for loop in loops:
         all_loops_cons.append(loop)  # найденные подциклы добавили в общий массив всех подциклов
 
-    # создаем вторую модель решателя (model - модель, ans - 3х*массив из x_ijk, colors_list - 2x*массив из y_jl
+    # создаем вторую модель решателя (model - модель, ans - 3х*массив из x_ijk, colors_list - 2x*массив из y_jl)
     model, ans, colors_list = create_model("Tantrix", n, n_new, is_spiral, chosen_field)
 
     res_sum = 0  # для ограничения на подциклы, если они будут
@@ -83,7 +83,7 @@ while len(loops) != 1:
                 if x == str(var):  # если среди переменных нашлась переменная из подцикла
                     res_sum += var  # добавляем её в сумму, для последующего составления ограничения на подцикл
 
-        model.addCons(res_sum <= (len(vars_in_loop) - 1))
+        model.addCons(res_sum <= (len(vars_in_loop) - 1))   # запрещаем каждый найденный подцикл
         res_sum = 0
 
     print(f'ВСЕ ПОДЦИКЛЫ:\nall_loops_cons={all_loops_cons}')
@@ -92,6 +92,7 @@ while len(loops) != 1:
     model.optimize()
     sol = model.getBestSol()  # берем лучшее решение
     print(f"---------------------------------------- {count_while+1} ЗАПУСК РЕШАТЕЛЯ -----------------------------------------")
+    # print(f"Выбранное поле: {chosen_field}")
     print(f'Решатель перезапускался {count_while} раз')
     # вывод правильного расположения фишек (ответа)
     vars_count = 0  # кол-во переменных в текущем решении (число фишек в петле)
@@ -109,7 +110,12 @@ while len(loops) != 1:
     loops = sub_functions.loops(list_ans, n_new, is_spiral, chosen_field)
     print(f'loops={loops}')
     print(f'\nans={ans}')
-    print(f'colors_list={colors_list}')
+    # print(f'colors_list={colors_list}')
+
+    # чтобы избежать двойного вывода ответа(включая ветку else ниже) т.к. кол-во подциклов на перезапуске может меняться
+    # и мы можем уйти в else
+    if len(loops) == 1:
+        exit()
 else:
     print(f"Кол-во переменных в текущем решении: {vars_count}")
     for i in range(1, n_new + 1):

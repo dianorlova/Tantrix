@@ -111,8 +111,8 @@ class SubCons:
                 self.model.addCons(sum8 <= 1)
 
                 sum11 = self.ans[1 - 1][j - 1][5 - 1] + self.ans[2 - 1][j - 1][5 - 1] + \
-                       self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][3 - 1] + \
-                       self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][3 - 1]
+                        self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][3 - 1] + \
+                        self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][3 - 1]
                 self.model.addCons(sum11 <= 1)
 
                 sum12 = self.ans[1 - 1][j - 1][5 - 1] + self.ans[3 - 1][j - 1][6 - 1] + \
@@ -260,9 +260,10 @@ class SubCons:
                         self.ans[3 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][2 - 1]
                 self.model.addCons(sum58 <= 1)
 
-                if len(self.ans)>=10:   # т.к. в ограничениях есть фишка вида 10 (а фишек может быть всего 9)
+                if len(self.ans) >= 10:  # т.к. в ограничениях есть фишка вида 10 (а фишек может быть всего 9)
                     sum4 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[10 - 1][j - 1][6 - 1] + \
-                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][2 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
                            self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][2 - 1]
                     self.model.addCons(sum4 <= 1)
 
@@ -439,8 +440,8 @@ class SubCons:
                 self.model.addCons(sum7 <= 1)
 
                 sum13 = self.ans[3 - 1][j - 1][1 - 1] + self.ans[5 - 1][j - 1][4 - 1] + \
-                       self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][2 - 1] + \
-                       self.ans[3 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][5 - 1]
+                        self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][2 - 1] + \
+                        self.ans[3 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][5 - 1]
                 self.model.addCons(sum13 <= 1)
 
                 sum19 = self.ans[3 - 1][j - 1][2 - 1] + self.ans[5 - 1][j - 1][5 - 1] + \
@@ -711,19 +712,19 @@ class SubCons:
 
                     sum11 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[4 - 1][j - 1][5 - 1] + self.ans[6 - 1][j - 1][
                         2 - 1] + self.ans[7 - 1][j - 1][6 - 1] + self.ans[8 - 1][j - 1][1 - 1] + \
-                           self.ans[10 - 1][j - 1][1 - 1] + \
-                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               3 - 1] + \
-                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               2 - 1] + \
-                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               5 - 1] + \
-                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               3 - 1] + \
-                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               4 - 1] + \
-                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               4 - 1]
+                            self.ans[10 - 1][j - 1][1 - 1] + \
+                            self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                3 - 1] + \
+                            self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                2 - 1] + \
+                            self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                5 - 1] + \
+                            self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                3 - 1] + \
+                            self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                4 - 1] + \
+                            self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                4 - 1]
                     self.model.addCons(sum11 <= 1)
 
                 elif len(self.ans) >= 8:
@@ -846,10 +847,10 @@ class SubCons:
                     self.model.addCons(sum5 <= 1)
 
                     sum10 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
-                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
-                               4 - 1] + \
-                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
-                               3 - 1]
+                            self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                                4 - 1] + \
+                            self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                                3 - 1]
                     self.model.addCons(sum10 <= 1)
 
                     sum15 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[4 - 1][j - 1][5 - 1] + \
@@ -864,16 +865,22 @@ class SubCons:
             print("ОБОЗНАЧЕННЫЙ ЦВЕТ СИНИЙ")
             for j in range(1, self.n + 1):
                 if len(self.ans) >= 10:
-                    sum1 = self.ans[1 - 1][j - 1][3 - 1] + self.ans[8 - 1][j - 1][1 - 1] + self.ans[9 - 1][j - 1][1 - 1] +\
-                            self.ans[10 - 1][j - 1][2 - 1] +\
-                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][6 - 1] + \
-                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][4 - 1] + \
-                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][4 - 1] + \
-                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][5 - 1]
+                    sum1 = self.ans[1 - 1][j - 1][3 - 1] + self.ans[8 - 1][j - 1][1 - 1] + self.ans[9 - 1][j - 1][
+                        1 - 1] + \
+                           self.ans[10 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1]
                     self.model.addCons(sum1 <= 1)
 
-                    sum5 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[8 - 1][j - 1][6 - 1] + self.ans[9 - 1][j - 1][6 - 1] +\
-                            self.ans[10 - 1][j - 1][1 - 1] + \
+                    sum5 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[8 - 1][j - 1][6 - 1] + self.ans[9 - 1][j - 1][
+                        6 - 1] + \
+                           self.ans[10 - 1][j - 1][1 - 1] + \
                            self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
                                5 - 1] + \
                            self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
@@ -899,7 +906,8 @@ class SubCons:
 
 
                 elif len(self.ans) >= 9:
-                    sum2 = self.ans[1 - 1][j - 1][3 - 1] + self.ans[8 - 1][j - 1][1 - 1] + self.ans[9 - 1][j - 1][1 - 1] + \
+                    sum2 = self.ans[1 - 1][j - 1][3 - 1] + self.ans[8 - 1][j - 1][1 - 1] + self.ans[9 - 1][j - 1][
+                        1 - 1] + \
                            self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
                                6 - 1] + \
                            self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
@@ -907,7 +915,8 @@ class SubCons:
                            self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][4 - 1]
                     self.model.addCons(sum2 <= 1)
 
-                    sum6 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[8 - 1][j - 1][6 - 1] + self.ans[9 - 1][j - 1][6 - 1] +\
+                    sum6 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[8 - 1][j - 1][6 - 1] + self.ans[9 - 1][j - 1][
+                        6 - 1] + \
                            self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
                                5 - 1] + \
                            self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
@@ -918,12 +927,12 @@ class SubCons:
 
                     sum10 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[8 - 1][j - 1][5 - 1] + self.ans[9 - 1][j - 1][
                         5 - 1] + \
-                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               4 - 1] + \
-                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               2 - 1] + \
-                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               2 - 1]
+                            self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                4 - 1] + \
+                            self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                2 - 1] + \
+                            self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                2 - 1]
                     self.model.addCons(sum10 <= 1)
 
                 elif len(self.ans) >= 8:
@@ -949,7 +958,8 @@ class SubCons:
                     self.model.addCons(sum11 <= 1)
 
                 else:
-                    sum4 = self.ans[1 - 1][j - 1][3 - 1] + self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                    sum4 = self.ans[1 - 1][j - 1][3 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
                                6 - 1]
                     self.model.addCons(sum4 <= 1)
 
@@ -1029,12 +1039,12 @@ class SubCons:
 
                     sum10 = self.ans[4 - 1][j - 1][2 - 1] + self.ans[6 - 1][j - 1][1 - 1] + self.ans[7 - 1][j - 1][
                         6 - 1] + \
-                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               5 - 1] + \
-                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               4 - 1] + \
-                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
-                               3 - 1]
+                            self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                5 - 1] + \
+                            self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                4 - 1] + \
+                            self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                                3 - 1]
                     self.model.addCons(sum10 <= 1)
 
                 elif len(self.ans) >= 6:
@@ -1074,3 +1084,1467 @@ class SubCons:
                             self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
                                 5 - 1]
                     self.model.addCons(sum12 <= 1)
+
+    # Оптимизация (Ограничения С7-С9) - убираем подциклы из 3, 4, 5 фишек при n>5
+    def cons_9(self, is_spiral, chosen_field, sub_functions):
+        """
+            Убираем подциклы из 5 фишек для обозначенного цвета (т.е. убираем конкретные расположения конкретных фишек)
+        """
+        designated_color = sub_functions.get_designated_color(self.n_new)  # получение обозн. цвета (буква К, Ж или С)
+        if designated_color == 'К':
+            print("ОБОЗНАЧЕННЫЙ ЦВЕТ КРАСНЫЙ")
+            for j in range(1, self.n + 1):
+                if len(self.ans) >= 10:
+                    sum1 = self.ans[5 - 1][j - 1][2 - 1] + self.ans[5 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + self.ans[9 - 1][j - 1][2 - 1] + self.ans[9 - 1][j - 1][5 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[10 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][j - 1][4 - 1] + \
+                           self.ans[7 - 1][j - 1][2 - 1] + \
+                           self.ans[8 - 1][j - 1][3 - 1] + \
+                           self.ans[10 - 1][j - 1][3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[5 - 1][j - 1][1 - 1] + self.ans[5 - 1][j - 1][4 - 1] + \
+                           self.ans[9 - 1][j - 1][1 - 1] + \
+                           self.ans[9 - 1][j - 1][4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[7 - 1][j - 1][6 - 1] + \
+                           self.ans[8 - 1][j - 1][1 - 1] + \
+                           self.ans[10 - 1][j - 1][1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[10 - 1][j - 1][2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                elif len(self.ans) >= 9:
+                    sum1 = self.ans[5 - 1][j - 1][2 - 1] + self.ans[5 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + self.ans[9 - 1][j - 1][2 - 1] + self.ans[9 - 1][j - 1][5 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][j - 1][4 - 1] + \
+                           self.ans[7 - 1][j - 1][2 - 1] + \
+                           self.ans[8 - 1][j - 1][3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[5 - 1][j - 1][1 - 1] + self.ans[5 - 1][j - 1][4 - 1] + \
+                           self.ans[9 - 1][j - 1][1 - 1] + \
+                           self.ans[9 - 1][j - 1][4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[7 - 1][j - 1][6 - 1] + \
+                           self.ans[8 - 1][j - 1][1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                elif len(self.ans) >= 8:
+                    sum1 = self.ans[5 - 1][j - 1][2 - 1] + self.ans[5 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][j - 1][4 - 1] + \
+                           self.ans[7 - 1][j - 1][2 - 1] + \
+                           self.ans[8 - 1][j - 1][3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[5 - 1][j - 1][1 - 1] + self.ans[5 - 1][j - 1][4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[7 - 1][j - 1][6 - 1] + \
+                           self.ans[8 - 1][j - 1][1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                elif len(self.ans) >= 7:
+                    sum1 = self.ans[5 - 1][j - 1][2 - 1] + self.ans[5 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][j - 1][4 - 1] + \
+                           self.ans[7 - 1][j - 1][2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[5 - 1][j - 1][1 - 1] + self.ans[5 - 1][j - 1][4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[7 - 1][j - 1][6 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                elif len(self.ans) >= 6:    # Ограничения С7-С9 касаются задач с кол-вом фишек > 5.
+                    sum1 = self.ans[5 - 1][j - 1][2 - 1] + self.ans[5 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][j - 1][4 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[5 - 1][j - 1][1 - 1] + self.ans[5 - 1][j - 1][4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + self.ans[4 - 1][j - 1][6 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+        if designated_color == 'С':
+            print("ОБОЗНАЧЕННЫЙ ЦВЕТ СИНИЙ")
+            for j in range(1, self.n + 1):
+                if len(self.ans) >= 10:
+                    sum1 = self.ans[1 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][j - 1][6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[9 - 1][j - 1][6 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[10 - 1][j - 1][1 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[2 - 1][j - 1][1 - 1] + \
+                           self.ans[2 - 1][j - 1][4 - 1] + \
+                           self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[4 - 1][j - 1][4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[2 - 1][j - 1][2 - 1] + \
+                           self.ans[2 - 1][j - 1][5 - 1] + \
+                           self.ans[4 - 1][j - 1][2 - 1] + \
+                           self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[1 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[9 - 1][j - 1][2 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[10 - 1][j - 1][1 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][3 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[9 - 1][j - 1][1 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[10 - 1][j - 1][2 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][j - 1][5 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[9 - 1][j - 1][5 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[10 - 1][j - 1][6 - 1] + \
+                           self.ans[10 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                elif len(self.ans) >= 9:
+                    sum1 = self.ans[1 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][j - 1][6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[9 - 1][j - 1][6 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[2 - 1][j - 1][1 - 1] + \
+                           self.ans[2 - 1][j - 1][4 - 1] + \
+                           self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[4 - 1][j - 1][4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[2 - 1][j - 1][2 - 1] + \
+                           self.ans[2 - 1][j - 1][5 - 1] + \
+                           self.ans[4 - 1][j - 1][2 - 1] + \
+                           self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[1 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[9 - 1][j - 1][2 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][3 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[9 - 1][j - 1][1 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][j - 1][5 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[9 - 1][j - 1][5 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                elif len(self.ans) >= 8:
+                    sum1 = self.ans[1 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][j - 1][6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[2 - 1][j - 1][1 - 1] + \
+                           self.ans[2 - 1][j - 1][4 - 1] + \
+                           self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[4 - 1][j - 1][4 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[2 - 1][j - 1][2 - 1] + \
+                           self.ans[2 - 1][j - 1][5 - 1] + \
+                           self.ans[4 - 1][j - 1][2 - 1] + \
+                           self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[1 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               1 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][3 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][j - 1][5 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                else:   # для всех остальных случаев (здесь фигурируют фишки вида 1,2,4)
+                    sum1 = self.ans[1 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[2 - 1][j - 1][1 - 1] + \
+                           self.ans[2 - 1][j - 1][4 - 1] + \
+                           self.ans[4 - 1][j - 1][1 - 1] + \
+                           self.ans[4 - 1][j - 1][4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[2 - 1][j - 1][2 - 1] + \
+                           self.ans[2 - 1][j - 1][5 - 1] + \
+                           self.ans[4 - 1][j - 1][2 - 1] + \
+                           self.ans[4 - 1][j - 1][5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[1 - 1][j - 1][2 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[1 - 1][j - 1][3 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[1 - 1][j - 1][1 - 1] + \
+                           self.ans[1 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+        if designated_color == 'Ж':
+            print("ОБОЗНАЧЕННЫЙ ЦВЕТ ЖЕЛТЫЙ")
+            for j in range(1, self.n + 1):
+                if len(self.ans) >= 9:
+                    sum1 = self.ans[4 - 1][j - 1][3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[9 - 1][j - 1][3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][j - 1][4 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[8 - 1][j - 1][5 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[4 - 1][j - 1][4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][j - 1][2 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[9 - 1][j - 1][4 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[4 - 1][j - 1][3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[9 - 1][j - 1][3 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[4 - 1][j - 1][2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][j - 1][6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[9 - 1][j - 1][2 - 1] + \
+                           self.ans[9 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                elif len(self.ans) >= 8:
+                    sum1 = self.ans[4 - 1][j - 1][3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[8 - 1][j - 1][1 - 1] + \
+                           self.ans[8 - 1][j - 1][4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][j - 1][2 - 1] + \
+                           self.ans[8 - 1][j - 1][5 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[4 - 1][j - 1][4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][j - 1][2 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[4 - 1][j - 1][3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[4 - 1][j - 1][2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][j - 1][6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[8 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                elif len(self.ans) >= 7:
+                    sum1 = self.ans[4 - 1][j - 1][3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[4 - 1][j - 1][4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[7 - 1][j - 1][2 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[4 - 1][j - 1][3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1] + \
+                           self.ans[7 - 1][j - 1][1 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               2 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[4 - 1][j - 1][2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[7 - 1][j - 1][6 - 1] + \
+                           self.ans[7 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+
+                else:
+                    sum1 = self.ans[4 - 1][j - 1][3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               2 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1]
+
+                    self.model.addCons(sum1 <= 2)
+
+                    sum2 = self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1]
+
+                    self.model.addCons(sum2 <= 2)
+
+                    sum3 = self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum3 <= 2)
+
+                    sum4 = self.ans[4 - 1][j - 1][4 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               5 - 1] + \
+                           self.ans[6 - 1][j - 1][3 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               4 - 1]
+
+                    self.model.addCons(sum4 <= 2)
+
+                    sum5 = self.ans[4 - 1][j - 1][3 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               4 - 1] + \
+                           self.ans[6 - 1][j - 1][2 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 3, chosen_field[1]) - 1][
+                               3 - 1]
+
+                    self.model.addCons(sum5 <= 2)
+
+                    sum6 = self.ans[4 - 1][j - 1][2 - 1] + \
+                           self.ans[4 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               1 - 1] + \
+                           self.ans[6 - 1][j - 1][1 - 1] + \
+                           self.ans[6 - 1][sub_functions.choose_a_function(is_spiral, j, 2, chosen_field[1]) - 1][
+                               6 - 1]
+
+                    self.model.addCons(sum6 <= 2)
+

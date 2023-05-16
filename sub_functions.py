@@ -155,6 +155,14 @@ class SubFunctions:
         Возвращает:
             цвет линии(1,2 или 3), соответствующей ребру l, когда фишка i расположена в ориентации k
         """
+
+        # Исправлено: в этом месте для корректности определения обозначенного цвета перепишем величину n_new,
+        # например, если 17 фишек, то обознач. цвет Красный (т.к. цвет фишки вида 17 % 10 = 7 -- Красный)
+        # ошибка состояла в том, что по умолчанию n_new = min(n,10), см. ограничение С2 в Дипломе,
+        # след-но это давало бы для 17 фишек цвет Синий (min(17,10)=7), что неверно
+        if self.n % 10 != 0:    # для корректности цвета при кол-ве фишек кратным 10
+            n_new = self.n % 10
+
         designated_color = dict_designated_color[n_new]  # получаем обозначенный цвет
 
         dict_color_indicator = dict_colors[designated_color]  # получаем словарь цифр цветов по обозначенному цвету
@@ -162,8 +170,11 @@ class SubFunctions:
         color = dict_chip_orientation_edge[i][k][l]  # => К,Ж или С
         return dict_color_indicator[color]
 
-    @staticmethod
-    def get_designated_color(n_new):
+    def get_designated_color(self, n_new):
+        # см. выше исправление
+        if self.n % 10 != 0:  # для корректности цвета при кол-ве фишек кратным 10
+            n_new = self.n % 10
+
         # получение обозначенного цвета (буква К, Ж или С)
         return dict_designated_color[n_new]
 

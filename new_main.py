@@ -2,8 +2,10 @@
 from create_model import create_model
 # дополнительные функции a(j,l), c(i,k,l) и т.д.
 from sub_functions import SubFunctions
-
+# выбор поля (спираль/решетка)
 from select_field import select_field
+# засекаем время работы решателя
+import datetime
 
 # массив для хранения переменных, содержащихся в подцикле (для последующего запрета этого подцикла)
 all_loops_cons = list()  # массив ВСЕХ подциклов:
@@ -39,6 +41,10 @@ n_new = min([n, 10])  # см. С2'(версия с дубликатами)
 
 # создаем модель решателя (model - модель, ans - 3х*массив из x_ijk, colors_list - 2x*массив из y_jl)
 model, ans, colors_list = create_model("Tantrix", n, n_new, is_spiral, chosen_field)
+
+# засекаем время работы решателя
+d = datetime.datetime.now(datetime.timezone.utc)
+temp_now = [d.hour+3, d.minute,d.second,d.microsecond]
 
 # решение головоломки
 model.optimize()
@@ -116,6 +122,12 @@ while len(loops) != 1:
     # чтобы избежать двойного вывода ответа(включая ветку else ниже) т.к. кол-во подциклов на перезапуске может меняться
     # и мы можем уйти в else
     if len(loops) == 1:
+        # засекаем время работы решателя
+        print(f'{temp_now[0]}ч, {temp_now[1]}мин, {temp_now[2]}с  -- начало работы решателя')
+        d = datetime.datetime.now(datetime.timezone.utc)
+        now = [d.hour + 3, d.minute, d.second]
+        print(f'{now[0]}ч, {now[1]}мин, {now[2]}с  -- окончание работы решателя')
+
         exit()
 else:
     print(f"Кол-во переменных в текущем решении: {vars_count}")
@@ -127,3 +139,20 @@ else:
                     print(f'x_{i}_{j}_{k}: {round(sol[ans[i - 1][j - 1][k - 1]], 1)}')
     print(f'ans={ans}')
     print("Всё ОК")
+
+# засекаем время работы решателя
+print(f'{temp_now[0]}ч, {temp_now[1]}мин, {temp_now[2]}с  -- начало работы решателя')
+d = datetime.datetime.now(datetime.timezone.utc)
+now = [d.hour+3, d.minute,d.second]
+print(f'{now[0]}ч, {now[1]}мин, {now[2]}с  -- окончание работы решателя')
+res_minute = 0
+res_second = 0
+if temp_now[1] <= now[1]:
+    res_minute = now[1] - temp_now[1]
+elif temp_now[1] > now[1]:
+    res_minute = 60 - temp_now[1] + now[1]
+if temp_now[2] <= now[2]:
+    res_second = now[2] - temp_now[2]
+elif temp_now[2] > now[2]:
+    res_second = 60 - temp_now[2] + now[2]
+print(f'{res_minute}мин, {res_second}с  -- время работы решателя')

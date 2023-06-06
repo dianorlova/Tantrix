@@ -12,7 +12,7 @@ step = {
     4: (-2, 0),
     5: (-1, -1),
     6: (1, -1)
-}
+}   # для спирали
 
 
 class SubFunctions:
@@ -136,7 +136,9 @@ class SubFunctions:
                     n_a = a - 1
                     n_b = b + 0
         ans = n_a * m + n_b
-        if (ans // m, ans % m) != (n_a, n_b):  # условие на выход за пределы гекс.решетки
+
+        # условие на выход за пределы гекс.решетки
+        if (ans // m, ans % m) != (n_a, n_b):
             ans = 0
         else:
             ans += 1
@@ -149,83 +151,91 @@ class SubFunctions:
         Принимает:
             i - номер фишки(от 1 до n_new),
             k - ориентация фишки(от 1 до 6),
-            l - ребро (от 1 до 6)
-            n_new - n' (см. C2' в курсовой)
-
+            l - ребро(от 1 до 6)
+            n_new - n', вид(от 1 до 10) последней фишки из набранных
         Возвращает:
             цвет линии(1,2 или 3), соответствующей ребру l, когда фишка i расположена в ориентации k
         """
-
         # Исправлено: в этом месте для корректности определения обозначенного цвета перепишем величину n_new,
         # например, если 17 фишек, то обознач. цвет Красный (т.к. цвет фишки вида 17 % 10 = 7 -- Красный)
         # ошибка состояла в том, что по умолчанию n_new = min(n,10), см. ограничение С2 в Дипломе,
-        # след-но это давало бы для 17 фишек цвет Синий (min(17,10)=7), что неверно
-        if self.n % 10 != 0:    # для корректности цвета при кол-ве фишек кратным 10
+        # след-но это давало бы для 17 фишек цвет Синий (min(17,10)=10), что неверно
+        if self.n % 10 != 0:    # для корректности обозн. цвета при кол-ве фишек некратном 10
             n_new = self.n % 10
 
-        designated_color = dict_designated_color[n_new]  # получаем обозначенный цвет
+        # получаем обозначенный цвет
+        designated_color = dict_designated_color[n_new] # => К,Ж или С
 
-        dict_color_indicator = dict_colors[designated_color]  # получаем словарь цифр цветов по обозначенному цвету
+        # получаем словарь цифр цветов по обозначенному цвету
+        # например dict_color_indicator = {"К": 3,
+        #                                  "Ж": 2,
+        #                                  "С": 1}
+        dict_color_indicator = dict_colors[designated_color]
 
+        # получаем цвет на ребре l для фишки i в ориентации k
         color = dict_chip_orientation_edge[i][k][l]  # => К,Ж или С
-        return dict_color_indicator[color]
+        # получаем цифру этого цвета
+        return dict_color_indicator[color]  # => цвет 1,2 или 3
 
     def get_designated_color(self, n_new):
         # см. выше исправление
-        if self.n % 10 != 0:  # для корректности цвета при кол-ве фишек кратным 10
+        if self.n % 10 != 0:  # для корректности цвета при кол-ве фишек некратном 10
             n_new = self.n % 10
 
         # получение обозначенного цвета (буква К, Ж или С)
         return dict_designated_color[n_new]
 
     def loops(self, list_ans, n_new, is_spiral, chosen_field):
-        # возвращает список всех циклов
-        cur_vars = {tuple(i) for i in list_ans}     # {(i,j,k), ..., (i,j,k)}
+        # возвращает список всех циклов(петель) за текущий запуск
+        cur_vars = {tuple(i) for i in list_ans}     # {(i,j,k), ..., (i,j,k)} - индексы x_ijk в ответе
         ans = list()
-        while cur_vars:
-            temp = self.get_vars_in_loop(list_ans, n_new, cur_vars.pop(), is_spiral, chosen_field)
-            cur_vars -= temp
-            print(temp)
-            ans.append(temp)
+        while cur_vars:     # пока существует cur_vars (или пока не перебрали все переменные x_ijk ответа)
+            # находим цикл на нашем решении
+            loop = self.get_vars_in_loop(list_ans, n_new, cur_vars.pop(), is_spiral, chosen_field)
+            cur_vars -= loop # из множества ijk вычитаем те ijk, которые входят в цикл
+            # print(loop)     # выводит цикл на текущем решении (это либо один цикл(петля), либо подцикл)
+            ans.append(loop)
         return ans
 
     def get_vars_in_loop(self, list_ans, n_new, start, is_spiral, chosen_field, designated_color=3):
         """
         Принимает:
-            list_ans - Двумерный массив вида [[i, j, k], ..., [i', j', k']], это индексы всех иксов (x_ijk в ответе)
+            list_ans - Двумерный массив вида [[i, j, k], ..., [i, j, k]], это индексы всех иксов (x_ijk в ответе)
              текущего решения,
+            n_new - количество видов фишек (всего может быть 10 видов, т.е. рисунков),
             designated_color - обозначенный цвет (всегда равен 3),
-            n_new - количество видов фишек (всего может быть 10 видов, т.е. рисунков)
+            start - фишка, с которой стартуем и идём по обозначенному цвету designated_color,
+            is_spiral - True/False - является ли поле спиралью,
+            chosen_field - кортеж с кол-вом строк и столбцов в поле ((0, 0) для спирали)
 
         Возвращает:
-            ans - Массив вида [[i,j,k], ..., [i',j',k']], где ijk - индексы переменных в петле/подцикле
+            ans - множество вида {(i,j,k), ..., (i,j,k)}, где ijk - индексы переменных в петле/подцикле
         """
-        # возвращает массив из массивов, содержащих индексы переменных, входящих в подцикл
         ans = set()
-        d = dict()
+        dict_j_ijk = dict()
         for lst in list_ans:
-            d[lst[1]] = lst  # d[j] = [i,j,k] для каждого j
+            dict_j_ijk[lst[1]] = lst  # d[j] = [i,j,k] для каждого j
         prev = None  # предыдущий
-        cur = start  # [i,j,k] текущий (стартовая фишка)
-        a = cur[1]  # i из [i,j,k]
+        cur = start  # (i,j,k) текущий (стартовая фишка)
+        a = cur[1]  # j из (i,j,k)
         ans.add(tuple(cur))
         while True:
-            next_cur = self.get_next(cur, prev, designated_color, d, n_new, is_spiral, chosen_field)
+            next_cur = self.get_next(cur, prev, designated_color, dict_j_ijk, n_new, is_spiral, chosen_field)
             if next_cur[1] == a:  # если j соседней фишки = j стартовой фишки => петля замкнулась
                 break
             prev = cur[1]  # стартовое место j стало предыдущим
-            ans.add(tuple(next_cur))  # [i,j,k] добавляем в массив элементов петли/подцикла
-            cur = next_cur  # также смещаем текущее место на следующее
+            ans.add(tuple(next_cur))  # (i,j,k) следующей фишки добавляем в множество фишек, входящих в петлю/подцикл
+            cur = next_cur  # также смещаем текущую фишку на следующую
         return ans
 
-    def get_next(self, cur, prev, designated_color, all_ans_dict, n_new, is_spiral, chosen_field):
+    def get_next(self, cur, prev, designated_color, dict_j_ijk, n_new, is_spiral, chosen_field):
         # возвращает индексы ijk следующего(соседнего) элемента в петле (ищем соседний эл-т по цвету петли)
         for l in range(1, 7):  # цикл по рёбрам
             cur_color = self.c(cur[0], cur[2], l, n_new)  # получаем текущий цвет ребра (1,2 или 3)
-            if cur_color == designated_color:  # если он равен 3(обозначенному цвету - цвету главной петли)
+            if cur_color == designated_color:  # если он равен 3 (обозначенному цвету - цвету главной петли)
                 next_cur = self.choose_a_function(is_spiral, cur[1], l, chosen_field[1])  # находим соседа в петле для места j=cur[1] по этому ребру l
                 if next_cur != prev and next_cur != 0:  # если сосед существует
-                    return all_ans_dict[next_cur]
+                    return dict_j_ijk[next_cur]
 
     @staticmethod
     def number_divisors(n):

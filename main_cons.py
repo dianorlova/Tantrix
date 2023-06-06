@@ -26,7 +26,6 @@ class MainConst:
             for i in range(1, self.n_new + 1):
                 for k in range(1, 7):
                     res_sum += self.ans[i - 1][j - 1][k - 1]
-
                     # формируем вывод строчки (сумма x_i_j_k) при конкретном j
                     if i == k == 1:
                         str += f'{self.ans[i - 1][j - 1][k - 1]}'

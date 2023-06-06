@@ -21,7 +21,7 @@ class SubCons:
                 for i in range(1, self.n_new + 1):
                     for k in range(1, 7):
                         res_sum += sub_functions.c(i, k, l, self.n_new) * self.ans[i - 1][j - 1][k - 1]
-
+                        # для записи красивой строки в файл
                         if i == k == 1:
                             str += f'c_{i}_{k}_{l}*{self.ans[i - 1][j - 1][k - 1]}'
                         else:
@@ -44,7 +44,7 @@ class SubCons:
         # print(f'designated_color={designated_color}')
         # если обозначенный цвет красный (К)
         if designated_color == 'К':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ КРАСНЫЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ КРАСНЫЙ")
             for j in range(1, self.n + 1):
                 sum1 = self.ans[2 - 1][j - 1][3 - 1] + self.ans[3 - 1][j - 1][5 - 1] + \
                        self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][5 - 1] + \
@@ -78,7 +78,7 @@ class SubCons:
                 self.model.addCons(sum6 <= 1)
 
         elif designated_color == 'Ж':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ ЖЕЛТЫЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ ЖЕЛТЫЙ")
             for j in range(1, self.n + 1):
                 sum1 = self.ans[1 - 1][j - 1][6 - 1] + self.ans[2 - 1][j - 1][6 - 1] + \
                        self.ans[2 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][2 - 1] + \
@@ -427,7 +427,7 @@ class SubCons:
                     self.model.addCons(sum60 <= 1)
 
         elif designated_color == 'С':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ СИНИЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ СИНИЙ")
             for j in range(1, self.n + 1):
                 sum1 = self.ans[3 - 1][j - 1][3 - 1] + self.ans[5 - 1][j - 1][6 - 1] + \
                        self.ans[5 - 1][sub_functions.choose_a_function(is_spiral, j, 1, chosen_field[1]) - 1][2 - 1] + \
@@ -673,7 +673,7 @@ class SubCons:
         # print(f'designated_color={designated_color}')
         # если обозначенный цвет красный (К)
         if designated_color == 'К':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ КРАСНЫЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ КРАСНЫЙ")
             for j in range(1, self.n + 1):
                 if len(self.ans) >= 10:
                     sum1 = self.ans[1 - 1][j - 1][2 - 1] + self.ans[4 - 1][j - 1][1 - 1] + self.ans[6 - 1][j - 1][
@@ -862,7 +862,7 @@ class SubCons:
 
         # если обозначенный цвет синий (С)
         if designated_color == 'С':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ СИНИЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ СИНИЙ")
             for j in range(1, self.n + 1):
                 if len(self.ans) >= 10:
                     sum1 = self.ans[1 - 1][j - 1][3 - 1] + self.ans[8 - 1][j - 1][1 - 1] + self.ans[9 - 1][j - 1][
@@ -974,7 +974,7 @@ class SubCons:
                     self.model.addCons(sum12 <= 1)
 
         if designated_color == 'Ж':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ ЖЕЛТЫЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ ЖЕЛТЫЙ")
             for j in range(1, self.n + 1):
                 if len(self.ans) >= 9:
                     sum1 = self.ans[4 - 1][j - 1][4 - 1] + self.ans[6 - 1][j - 1][3 - 1] + self.ans[7 - 1][j - 1][
@@ -1092,7 +1092,7 @@ class SubCons:
         """
         designated_color = sub_functions.get_designated_color(self.n_new)  # получение обозн. цвета (буква К, Ж или С)
         if designated_color == 'К':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ КРАСНЫЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ КРАСНЫЙ")
             for j in range(1, self.n + 1):
                 if len(self.ans) >= 10:
                     sum1 = self.ans[5 - 1][j - 1][2 - 1] + self.ans[5 - 1][j - 1][5 - 1] + \
@@ -1751,7 +1751,7 @@ class SubCons:
                     self.model.addCons(sum6 <= 2)
 
         if designated_color == 'С':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ СИНИЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ СИНИЙ")
             for j in range(1, self.n + 1):
                 if len(self.ans) >= 10:
                     sum1 = self.ans[1 - 1][j - 1][2 - 1] + \
@@ -2190,7 +2190,7 @@ class SubCons:
                     self.model.addCons(sum6 <= 2)
 
         if designated_color == 'Ж':
-            print("ОБОЗНАЧЕННЫЙ ЦВЕТ ЖЕЛТЫЙ")
+            # print("ОБОЗНАЧЕННЫЙ ЦВЕТ ЖЕЛТЫЙ")
             for j in range(1, self.n + 1):
                 if len(self.ans) >= 9:
                     sum1 = self.ans[4 - 1][j - 1][3 - 1] + \
@@ -2547,4 +2547,3 @@ class SubCons:
                                6 - 1]
 
                     self.model.addCons(sum6 <= 2)
-

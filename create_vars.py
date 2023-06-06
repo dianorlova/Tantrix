@@ -1,7 +1,8 @@
 class CreateVars:
     """
-        Описывает добавление переменных x(i,j,k) и  y(j,l) в модель
+        Описывает добавление переменных x_ijk и y_jl в модель
     """
+
     def __init__(self, n, n_new, ans, model, colors_list):
         self.n = n
         self.n_new = n_new
@@ -21,11 +22,12 @@ class CreateVars:
             for j in range(1, self.n + 1):
                 self.ans[i - 1].append(list())
                 for k in range(1, 7):
-                    self.ans[i - 1][j - 1].append(self.model.addVar(f"x_{i}_{j}_{k}", vtype="INTEGER"))
-                    self.model.addCons(0 <= (self.ans[i - 1][j - 1][k - 1] <= 1))  # x_i_j_k принимает значение 1 или 0
-
+                    self.ans[i-1][j-1].append(self.model.addVar(f"x_{i}_{j}_{k}", vtype="INTEGER"))
+                    # x_ijk принимает значение 1 или 0
+                    self.model.addCons(0 <= (self.ans[i-1][j-1][k-1] <= 1))
+                    # для проверки записываем в файл и подсчитываем переменные x_ijk
                     count_x_i_j_k += 1
-                    file.write(f'{self.ans[i - 1][j - 1][k - 1]}\n')
+                    file.write(f'{self.ans[i-1][j-1][k-1]}\n')
 
         file.write(f'Переменных x_i_j_k: {count_x_i_j_k}')
         file.close()
@@ -43,8 +45,9 @@ class CreateVars:
             self.colors_list.append(list())
             for l in range(1, 7):
                 self.colors_list[j - 1].append(self.model.addVar(f"y_{j}_{l}", vtype="INTEGER"))
-                self.model.addCons(1 <= (self.colors_list[j - 1][l - 1] <= 3))  # y_j_l принимает значение 1, 2 или 3
-
+                # y_jl принимает значение 1, 2 или 3
+                self.model.addCons(1 <= (self.colors_list[j-1][l-1] <= 3))
+                # для проверки записываем в файл и подсчитываем переменные y_jl
                 count_y_j_l += 1
                 file.write(f'{self.colors_list[j - 1][l - 1]}\n')
 

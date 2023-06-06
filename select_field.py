@@ -2,7 +2,7 @@ def create_field_list(lst_divisors):
     """Функция создает и возвращает строку с возможными вариантами полей"""
     fields = "0. Спиральное поле\n"
     for index, divisor in enumerate(lst_divisors):
-        fields += f"{index+1}. Сетка из {divisor[0]} строк и {divisor[1]} столбцов\n"
+        fields += f"{index+1}. Решетка из {divisor[0]} строк и {divisor[1]} столбцов\n"
     fields += f"{len(lst_divisors)+1}. Выход"
     return fields
 

@@ -15,42 +15,31 @@ all_loops_cons = list()  # массив ВСЕХ подциклов:
 #   {(i,j,k), ..., (i,j,k)}  - индексы фишек в s-ом подцикле,
 # ]
 
-# читаем из файла количество фишек
-# file = open('input.txt', 'r', encoding='utf-8')
-# n = int(file.read())
-# file.close()
-
 # пользователь указывает количество фишек
 n = int(input("Введите номер задачи для решения: "))
 if n < 3:
-    print("Нет решения. Количество фишек должно быть >=3 .")
+    print("Невозможно решить задачу, т.к. количество фишек должно быть >= 3.")
     exit()
-
 # создание экземпляра класса Дополнительных функций
 sub_functions = SubFunctions(n)
-
 # ищет все делители числа n, кроме делителя 1
 lst_divisors = sub_functions.number_divisors(n)
-
 # определяем, является ли поле спиралью и кол-во строк и столбцов в поле
 is_spiral, chosen_field = select_field(lst_divisors)
-
-
 # каждая фишка i имеет вид(рисунок линий) 1, 2, ..., 10; это значение выражает n_new
 n_new = min([n, 10])  # см. С2'(версия с дубликатами)
-
 # создаем модель решателя (model - модель, ans - 3х*массив из x_ijk, colors_list - 2x*массив из y_jl)
 model, ans, colors_list = create_model("Tantrix", n, n_new, is_spiral, chosen_field)
 
 # засекаем время работы решателя
 d = datetime.datetime.now(datetime.timezone.utc)
-temp_now = [d.hour+3, d.minute,d.second,d.microsecond]
+temp_now = f'{d.hour+3}:{d.minute}:{d.second}.{d.microsecond}'
 
-# решение головоломки
-model.optimize()
-sol = model.getBestSol()  # берем лучшее решение
-print("------------------------------------------ 1 ЗАПУСК РЕШАТЕЛЯ --------------------------------------------")
-print(f"Выбранное поле: {chosen_field}")
+print("------------------- 1 ЗАПУСК РЕШАТЕЛЯ -------------------")
+model.optimize()            # запуск решателя
+sol = model.getBestSol()    # берем лучшее решение
+
+print(f'\nВыбранное поле: {"Спираль" if is_spiral else "Решетка "+str(chosen_field[0])+"x"+str(chosen_field[1])}')
 
 # вывод правильного расположения фишек (ответа)
 vars_count = 0  # Кол-во переменных в текущем решении (число фишек в петле)
@@ -58,24 +47,49 @@ list_ans = list()  # двумерный массив вида [[i, j, k], ..., [
 for i in range(1, n_new + 1):
     for j in range(1, n + 1):
         for k in range(1, 7):
-            if round(sol[ans[i - 1][j - 1][k - 1]], 1) == 1.0:
-                list_ans.append([i, j, k])
-                vars_count += 1
+            try:
+                if round(sol[ans[i - 1][j - 1][k - 1]], 1) == 1.0:
+                    list_ans.append([i, j, k])
+                    vars_count += 1
+            except:
+                print(f'Ответ:\nНе существует решения данной головоломки из {n} фишек на поле вида '
+                      f'{"Спираль" if is_spiral else "Решетка "+str(chosen_field[0])+"x"+str(chosen_field[1])}')
+                # засекаем время работы решателя
+                d = datetime.datetime.now(datetime.timezone.utc)
+                now = f'{d.hour + 3}:{d.minute}:{d.second}.{d.microsecond}'
+                format = '%H:%M:%S.%f'
+                time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[:-3]
+                # print(f'{temp_now} -- начало')
+                # print(f'{now} -- окончание')
+                # print(f'{time} -- время решения')
+                print(f'\nРешатель запускался 1 раз')
+                exit()
+# print(f"\nДвумерный массив вида [[i, j, k], ..., [i', j', k']], это индексы всех иксов (x_ijk в ответе)\n"
+#       f"list_ans={list_ans}")
+try:
+    # хранит список всех петель за один запуск решателя
+    loops = sub_functions.loops(list_ans, n_new, is_spiral, chosen_field)
+except:
+    print(f'Ответ:\nПревышено время ожидания. Не существует решения данной головоломки из {n} фишек на поле вида '
+          f'{"Спираль" if is_spiral else "Решетка " + str(chosen_field[0]) + "x" + str(chosen_field[1])}')
+    # засекаем время работы решателя
+    d = datetime.datetime.now(datetime.timezone.utc)
+    now = f'{d.hour + 3}:{d.minute}:{d.second}.{d.microsecond}'
+    format = '%H:%M:%S.%f'
+    time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[:-3]
+    # print(f'{temp_now} -- начало')
+    # print(f'{now} -- окончание')
+    # print(f'{time} -- время решения')
+    exit()
 
-print(f"\nДвумерный массив вида [[i, j, k], ..., [i', j', k']], это индексы всех иксов (x_ijk в ответе)\n"
-      f"list_ans={list_ans}")
-
-# хранит список всех петель за один запуск решателя
-loops = sub_functions.loops(list_ans, n_new, is_spiral, chosen_field)
-
-count_while = 0
+count_while = 1    # кол-во запусков решателя
 while len(loops) != 1:
     count_while += 1
     print(f"\nКол-во переменных в текущем решении: {vars_count}")
-    print(f"!! Обнаружено {len(loops)} подцикла => добавляем ограничение на подциклы !!")
-    print(f'loops={loops}')
+    print(f"Обнаружено {len(loops)} подцикла => добавляем ограничение на подциклы.\n")
+    # print(f'Подциклы на текущем запуске: loops={loops}')     # подциклы на текущем запуске
     for loop in loops:
-        all_loops_cons.append(loop)  # найденные подциклы добавили в общий массив всех подциклов
+        all_loops_cons.append(loop)  # найденные подциклы на текущем запуске добавили в общий массив всех подциклов
 
     # создаем вторую модель решателя (model - модель, ans - 3х*массив из x_ijk, colors_list - 2x*массив из y_jl)
     model, ans, colors_list = create_model("Tantrix", n, n_new, is_spiral, chosen_field)
@@ -92,67 +106,76 @@ while len(loops) != 1:
 
         model.addCons(res_sum <= (len(vars_in_loop) - 1))   # запрещаем каждый найденный подцикл
         res_sum = 0
-
-    print(f'ВСЕ ПОДЦИКЛЫ:\nall_loops_cons={all_loops_cons}')
-
+    # print(f'ВСЕ ПОДЦИКЛЫ:\nall_loops_cons={all_loops_cons}')
+    print(f"------------------- {count_while} ЗАПУСК РЕШАТЕЛЯ -------------------")
     # решение головоломки
     model.optimize()
     sol = model.getBestSol()  # берем лучшее решение
-    print(f"---------------------------------------- {count_while+1} ЗАПУСК РЕШАТЕЛЯ -----------------------------------------")
 
-    print(f'Решатель перезапускался {count_while} раз')
     # вывод правильного расположения фишек (ответа)
     vars_count = 0  # кол-во переменных в текущем решении (число фишек в петле)
     list_ans = list()  # двумерный массив вида [[i, j, k], ..., [i', j', k']], это индексы всех иксов (x_ijk в ответе)
     for i in range(1, n_new + 1):
         for j in range(1, n + 1):
             for k in range(1, 7):
-                if round(sol[ans[i - 1][j - 1][k - 1]], 1) == 1.0:
-                    print(f'x_{i}_{j}_{k}: {round(sol[ans[i - 1][j - 1][k - 1]], 1)}')
-                    list_ans.append([i, j, k])
-                    vars_count += 1
+                try:
+                    if round(sol[ans[i - 1][j - 1][k - 1]], 1) == 1.0:
+                        list_ans.append([i, j, k])
+                        vars_count += 1
+                except:
+                    print(f'Ответ:\nНе существует решения данной головоломки из {n} фишек на поле вида '
+                          f'{"Спираль" if is_spiral else "Решетка " + str(chosen_field[0]) + "x" + str(chosen_field[1])}')
+                    # засекаем время работы решателя
+                    d = datetime.datetime.now(datetime.timezone.utc)
+                    now = f'{d.hour + 3}:{d.minute}:{d.second}.{d.microsecond}'
+                    format = '%H:%M:%S.%f'
+                    time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[
+                           :-3]
+                    # print(f'{temp_now} -- начало')
+                    # print(f'{now} -- окончание')
+                    # print(f'{time} -- время решения')
+                    exit()
 
-    print(f'list_ans={list_ans}')
+    # print(f'list_ans={list_ans}')
+
     # найденные петли за один запуск
     loops = sub_functions.loops(list_ans, n_new, is_spiral, chosen_field)
-    print(f'loops={loops}')
-    print(f'\nans={ans}')
-    # print(f'colors_list={colors_list}')
+    # print(f'Подциклы на текущем запуске: loops={loops}')     # кол-во подциклов на текущем запуске
+    # print(f'\nans={ans}')       # 3хмерный список всех переменных x_i_j_k
+    # print(f'colors_list={colors_list}')   # 2хмерный список всех переменных y_j_l
 
     # чтобы избежать двойного вывода ответа(включая ветку else ниже) т.к. кол-во подциклов на перезапуске может меняться
     # и мы можем уйти в else
-    if len(loops) == 1:
-        # засекаем время работы решателя
-        print(f'{temp_now[0]}ч, {temp_now[1]}мин, {temp_now[2]}с  -- начало работы решателя')
-        d = datetime.datetime.now(datetime.timezone.utc)
-        now = [d.hour + 3, d.minute, d.second]
-        print(f'{now[0]}ч, {now[1]}мин, {now[2]}с  -- окончание работы решателя')
+    # if len(loops) == 1:
+    #     print(f'\nРешатель запускался {count_while} раз')
+    #
+    #     # засекаем время работы решателя
+    #     d = datetime.datetime.now(datetime.timezone.utc)
+    #     now = f'{d.hour + 3}:{d.minute}:{d.second}.{d.microsecond}'
+    #     format = '%H:%M:%S.%f'
+    #     time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[:-3]
+    #     # print(f'{temp_now} -- начало')
+    #     # print(f'{now} -- окончание')
+    #     # print(f'{time} -- время решения')
+    #     exit()
 
-        exit()
 else:
     print(f"Кол-во переменных в текущем решении: {vars_count}")
+    print("Ответ:")
     for i in range(1, n_new + 1):
         for j in range(1, n + 1):
             for k in range(1, 7):
                 if round(sol[ans[i - 1][j - 1][k - 1]], 1) == 1.0:
                     # выводим ранее полученный ответ
                     print(f'x_{i}_{j}_{k}: {round(sol[ans[i - 1][j - 1][k - 1]], 1)}')
-    print(f'ans={ans}')
-    print("Всё ОК")
+    # print(f'ans={ans}')     # 3хмерный список всех переменных x_i_j_k
 
+print(f'\nРешатель запускался {count_while} раз')
 # засекаем время работы решателя
-print(f'{temp_now[0]}ч, {temp_now[1]}мин, {temp_now[2]}с  -- начало работы решателя')
 d = datetime.datetime.now(datetime.timezone.utc)
-now = [d.hour+3, d.minute,d.second]
-print(f'{now[0]}ч, {now[1]}мин, {now[2]}с  -- окончание работы решателя')
-res_minute = 0
-res_second = 0
-if temp_now[1] <= now[1]:
-    res_minute = now[1] - temp_now[1]
-elif temp_now[1] > now[1]:
-    res_minute = 60 - temp_now[1] + now[1]
-if temp_now[2] <= now[2]:
-    res_second = now[2] - temp_now[2]
-elif temp_now[2] > now[2]:
-    res_second = 60 - temp_now[2] + now[2]
-print(f'{res_minute}мин, {res_second}с  -- время работы решателя')
+now = f'{d.hour+3}:{d.minute}:{d.second}.{d.microsecond}'
+format = '%H:%M:%S.%f'
+time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[:-3]
+# print(f'{temp_now} -- начало')
+# print(f'{now} -- окончание')
+# print(f'{time} -- время решения')

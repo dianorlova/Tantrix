@@ -59,9 +59,9 @@ for i in range(1, n_new + 1):
                 now = f'{d.hour + 3}:{d.minute}:{d.second}.{d.microsecond}'
                 format = '%H:%M:%S.%f'
                 time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[:-3]
-                # print(f'{temp_now} -- начало')
-                # print(f'{now} -- окончание')
-                # print(f'{time} -- время решения')
+                print(f'{temp_now} -- начало')
+                print(f'{now} -- окончание')
+                print(f'{time} -- время решения')
                 print(f'\nРешатель запускался 1 раз')
                 exit()
 # print(f"\nДвумерный массив вида [[i, j, k], ..., [i', j', k']], это индексы всех иксов (x_ijk в ответе)\n"
@@ -77,9 +77,9 @@ except:
     now = f'{d.hour + 3}:{d.minute}:{d.second}.{d.microsecond}'
     format = '%H:%M:%S.%f'
     time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[:-3]
-    # print(f'{temp_now} -- начало')
-    # print(f'{now} -- окончание')
-    # print(f'{time} -- время решения')
+    print(f'{temp_now} -- начало')
+    print(f'{now} -- окончание')
+    print(f'{time} -- время решения')
     exit()
 
 count_while = 1    # кол-во запусков решателя
@@ -131,9 +131,9 @@ while len(loops) != 1:
                     format = '%H:%M:%S.%f'
                     time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[
                            :-3]
-                    # print(f'{temp_now} -- начало')
-                    # print(f'{now} -- окончание')
-                    # print(f'{time} -- время решения')
+                    print(f'{temp_now} -- начало')
+                    print(f'{now} -- окончание')
+                    print(f'{time} -- время решения')
                     exit()
 
     # print(f'list_ans={list_ans}')
@@ -176,6 +176,6 @@ d = datetime.datetime.now(datetime.timezone.utc)
 now = f'{d.hour+3}:{d.minute}:{d.second}.{d.microsecond}'
 format = '%H:%M:%S.%f'
 time = str(datetime.datetime.strptime(now, format) - datetime.datetime.strptime(temp_now, format))[:-3]
-# print(f'{temp_now} -- начало')
-# print(f'{now} -- окончание')
-# print(f'{time} -- время решения')
+print(f'{temp_now} -- начало')
+print(f'{now} -- окончание')
+print(f'{time} -- время решения')
